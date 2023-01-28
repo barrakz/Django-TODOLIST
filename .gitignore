@@ -3,7 +3,7 @@ __pycache__/
 
 # Django settings
 db.sqlite3
-settings.py
+
 
 # Virtual Env
 env/
