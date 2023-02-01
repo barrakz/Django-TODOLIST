@@ -17,3 +17,6 @@ static/
 
 # secret files
 secret_key.py
+
+.idea/
+
