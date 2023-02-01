@@ -44,7 +44,12 @@ def complete_task(request, task_id):
     return redirect('index')
 
 
-
+def add_category(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        Category.objects.create(name=name)
+        return redirect('index')
+    return render(request, 'tasks/add_category.html')
 
 
 
