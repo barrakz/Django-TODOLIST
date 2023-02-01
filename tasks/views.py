@@ -1,19 +1,25 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from .models import Task, Category
 
 
 def index(request):
     tasks = Task.objects.all()
-    context = {'tasks': tasks}
+    categories = Category.objects.all()
+    context = {'tasks': tasks,
+               'categories': categories}
     return render(request, 'tasks/index.html', context)
 
 
 def add(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         name = request.POST['name']
-        Task.objects.create(name=name)
+        category = Category.objects.get(id=request.POST['category'])
+        Task.objects.create(name=name, category=category)
         return redirect('index')
-    return render(request, 'tasks/add.html')
+    context = {'categories': categories}
+    return render(request, 'tasks/add.html', context)
+
 
 
 def edit(request, pk):
@@ -38,7 +44,12 @@ def complete_task(request, task_id):
     return redirect('index')
 
 
-
+def add_category(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        Category.objects.create(name=name)
+        return redirect('index')
+    return render(request, 'tasks/add_category.html')
 
 
 

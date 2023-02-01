@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+		body {
+		  background-image: url('https://www.publicdomainpictures.net/pictures/230000/velka/light-blue-background.jpg');
+		  background-size: cover;
+		}
+	</style>
     <title>{% block title %}Todo List{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -9,18 +15,22 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand mx-auto" href="{% url 'index' %}">Todo List</a>
+		
+        <a class="navbar-brand mx-auto" href="{% url 'index' %}">TODO LIST</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse mx-auto" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link" href="{% url 'index' %}">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add' %}">Add Task</a>
+                    <a class="nav-link" href="{% url 'add' %}">ADD TASK</a>
                 </li>
+				<li class="nav-item">
+  					<a class="nav-link" href="{% url 'add_category' %}">ADD CATEGORY</a>
+				</li>
             </ul>
         </div>
     </nav>

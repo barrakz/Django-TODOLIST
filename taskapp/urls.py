@@ -18,6 +18,7 @@ from django.urls import path
 
 from tasks import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -25,4 +26,5 @@ urlpatterns = [
     path('edit/<int:pk>', views.edit, name='edit'),
     path('delete/<int:pk>', views.delete, name='delete'),
     path('complete/<int:task_id>', views.complete_task, name='complete'),
+    path('category/add/', views.add_category, name='add_category'),
 ]
