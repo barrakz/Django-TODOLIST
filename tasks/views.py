@@ -5,8 +5,15 @@ from .models import Task, Category
 # MAIN MENU AND TASKS ADD AND EDIT
 
 def index(request):
+    print(request.GET)
     tasks = Task.objects.all().order_by('-created_at')
     categories = Category.objects.all()
+    status = request.GET.get('status')
+    if status == "True":
+        tasks = tasks.filter(completed=True)
+    elif status == "False":
+        tasks = tasks.filter(completed=False)
+
     context = {'tasks': tasks,
                'categories': categories}
     return render(request, 'tasks/index.html', context)
@@ -80,4 +87,3 @@ def delete_category(request, pk):
         task.save()
     Category.objects.get(id=pk).delete()
     return redirect('index')
-

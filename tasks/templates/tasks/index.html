@@ -2,6 +2,16 @@
 {% block content %}
 
 <h1 class="text-center">TODO LIST</h1>
+<form action="{% url 'index' %}" method="get" style="text-align: center;">
+    <label for="status">Show:</label>
+    <select name="status" id="status">
+        <option value="">All</option>
+        <option value="True" {% if status == 'true' %} selected{% endif %}>Completed</option>
+        <option value="False" {% if status == 'false' %} selected{% endif %}>Not Completed</option>
+    </select>
+    <button type="submit" style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Filter</button>
+</form>
+
 <table class="table mx-auto w-50">
     <thead>
         <tr>
@@ -33,6 +43,8 @@
         {% endfor %}
     </tbody>
 </table>
+
+
 <div class="text-center">
     <a href="{% url 'add' %}" class="btn btn-success">Add Task</a>
 </div>
