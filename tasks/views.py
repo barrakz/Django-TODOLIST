@@ -69,11 +69,11 @@ def edit_category(request, pk):
 
 def delete_category(request, pk):
     try:
-        default_category = Category.objects.get(name='Uncategorized')
+        default_category = Category.objects.get(name='None')
     except Category.DoesNotExist:
-        default_category = Category.objects.create(name='Uncategorized')
+        default_category = Category.objects.create(name='None')
 
-    default_category = Category.objects.get(name='Uncategorized')
+    default_category = Category.objects.get(name='None')
     tasks = Task.objects.filter(category=pk)
     for task in tasks:
         task.category = default_category
