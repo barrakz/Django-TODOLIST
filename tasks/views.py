@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Task, Category
 
 
+# MAIN MENU AND TASKS ADD AND EDIT
+
 def index(request):
     tasks = Task.objects.all()
     categories = Category.objects.all()
@@ -19,7 +21,6 @@ def add(request):
         return redirect('index')
     context = {'categories': categories}
     return render(request, 'tasks/add.html', context)
-
 
 
 def edit(request, pk):
@@ -44,14 +45,39 @@ def complete_task(request, task_id):
     return redirect('index')
 
 
+# CATEGORIES
+
 def add_category(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         name = request.POST['name']
         Category.objects.create(name=name)
         return redirect('index')
-    return render(request, 'tasks/add_category.html')
+    context = {'categories': categories}
+    return render(request, 'tasks/add_category.html', context)
 
 
+def edit_category(request, pk):
+    category = Category.objects.get(id=pk)
+    if request.method == 'POST':
+        category.name = request.POST['name']
+        category.save()
+        return redirect('add_category')
+    context = {'category': category}
+    return render(request, 'tasks/edit_category.html', context)
 
 
+def delete_category(request, pk):
+    try:
+        default_category = Category.objects.get(name='None')
+    except Category.DoesNotExist:
+        default_category = Category.objects.create(name='None')
+
+    default_category = Category.objects.get(name='None')
+    tasks = Task.objects.filter(category=pk)
+    for task in tasks:
+        task.category = default_category
+        task.save()
+    Category.objects.get(id=pk).delete()
+    return redirect('index')
 

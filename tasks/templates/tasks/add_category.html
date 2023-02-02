@@ -10,4 +10,24 @@
     </div>
     <input type="submit" value="Submit" class="btn btn-success w-100">
 </form>
+<h2 class="text-center mt-4">Categories</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.name }}</td>
+			<td><a href="{% url 'edit_category' category.id %}">Edit</a></td>
+			<td><a href="{% url 'delete_category' category.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
