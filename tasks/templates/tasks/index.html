@@ -25,10 +25,10 @@
                 </form>
             </td>
             <td>
-                <a href="{% url 'edit' task.pk %}" class="btn btn-primary mx-auto w-50">Edit</a>
-                <a href="{% url 'delete' task.pk %}" class="btn btn-danger mx-auto w-50">Delete</a>
+                <a href="{% url 'edit' task.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete' task.pk %}" class="btn btn-danger">Delete</a>
             </td>
-			<td>{{ task.created_at|date:"Y-m-d" }}</td>
+			<td>{{ task.created_at|date:"d-m-Y H:i" }}</td>
         </tr>
         {% endfor %}
     </tbody>

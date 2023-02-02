@@ -5,7 +5,7 @@ from .models import Task, Category
 # MAIN MENU AND TASKS ADD AND EDIT
 
 def index(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.all().order_by('-created_at')
     categories = Category.objects.all()
     context = {'tasks': tasks,
                'categories': categories}
