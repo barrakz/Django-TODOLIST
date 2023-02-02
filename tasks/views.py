@@ -59,7 +59,7 @@ def add_category(request):
     if request.method == 'POST':
         name = request.POST['name']
         Category.objects.create(name=name)
-        return redirect('index')
+        return redirect('add_category')
     context = {'categories': categories}
     return render(request, 'tasks/add_category.html', context)
 
@@ -86,4 +86,4 @@ def delete_category(request, pk):
         task.category = default_category
         task.save()
     Category.objects.get(id=pk).delete()
-    return redirect('index')
+    return redirect('add_category')
