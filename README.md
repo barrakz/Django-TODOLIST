@@ -1,27 +1,19 @@
-ToDoList Application
+<h1>ToDoList Application</h1>
 A simple task management system built with Django web framework. With this application, you can create, edit, delete, and complete tasks and categories.
 
-Requirements <br>
+<h3>Requirements</h3>
 Django (3.1 or later)<br>
-Python (3.7 or later)<br><br>
-Installation<br>
-Clone the repository to your local machine:
-
-
-'''
-git clone https://github.com/[YOUR_GITHUB_USERNAME]/ToDoList.git 
-'''''<br><br>
+Python (3.7 or later)
+<h3>Installation</h3>
+Clone the repository to your local machine: <br>
+``` git clone https://github.com/[YOUR_GITHUB_USERNAME]/ToDoList.git ``` <br><br>
 Install the required packages:
 
-pip install -r requirements.txt<br><br>
-Run the following command to apply the database migrations:
-
-
-python manage.py migrate<br><br>
-Start the development server:
-
-
-python manage.py runserver<br>
+```pip install -r requirements.txt```<br><br>
+Run the following command to apply the database migrations:<br>
+```python manage.py migrate```<br><br>
+Start the development server:<br>
+```python manage.py runserver```<br><br>
 You can now access the application at http://localhost:8000/
 
 Usage<br>
