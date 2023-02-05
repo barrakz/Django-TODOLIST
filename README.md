@@ -1,25 +1,35 @@
-"Todo List" application is a simple task management tool. The user can add new tasks, edit and delete existing tasks, and mark them as completed.
+<h1>ToDoList Application</h1>
+A simple task management system built with Django web framework. With this application, you can create, edit, delete, and complete tasks and categories.<br>
 
-<a href="https://ibb.co/fDFfQHt"><img src="https://i.ibb.co/9Zg6GW2/scr.jpg" alt="scr" border="0"></a>
+![image](https://user-images.githubusercontent.com/96372115/216814245-cf7b30f1-bf25-438c-a295-ccd5b64bfe79.png)
 
-Features:
 
-Task adding: the user can add a new task by clicking the "Add Task" button and filling out the task name form.
-Task editing: the user can edit an existing task by clicking the "Edit" button in the appropriate table row.
-Task deletion: the user can delete an existing task by clicking the "Delete" button in the appropriate table row.
-Task completion: the user can mark a task as completed by checking the "Completed" checkbox in the appropriate table row.
-The application has a simple user interface where tasks are displayed in a table with "Name" and "Actions" columns. The "Actions" column contains "Edit", "Delete" buttons and "Completed" checkbox.
+<h3>Requirements</h3>
+Django (3.1 or later)<br>
+Python (3.7 or later)
+<h3>Installation</h3>
+Clone the repository to your local machine.<br>
 
-Technologies used in the creation of the application:
 
-Django framework<br>
-HTML<br>
-CSS<br>
-JavaScript<br><br>
-Additional features that can be added to the application:
+Install the required packages:<br>
+```pip install -r requirements.txt```<br><br>
+Run the following command to apply the database migrations:<br>
+```python manage.py migrate```<br><br>
+Start the development server:<br>
+```python manage.py runserver```<br><br>
+You can now access the application at ``` http://localhost:8000/ ```
 
-Task filtering by status (e.g. only incomplete, only completed)<br>
-Task sorting by creation date or name<br>
-Ability to assign tasks to specific categories<br>
-Notifications about approaching task completion deadlines<br>
-The application is intended for people who want to better manage their tasks and have them at hand. It is easy to use and allows for easy task adding, editing, and deletion, as well as task completion marking.
+<h2>Usage</h2>
+<h3>Tasks</h3>
+You can view all the tasks by clicking on the 'Tasks' link in the navigation bar.<br>
+You can add a new task by clicking on the 'Add Task' button.<br>
+You can edit an existing task by clicking on the 'Edit' button next to the task.<br>
+You can delete a task by clicking on the 'Delete' button next to the task.<br>
+You can mark a task as complete by clicking on the 'Mark as Complete' button next to the task.<br>
+<h3>Categories</h3>
+You can view all the categories by clicking on the 'Categories' link in the navigation bar.<br>
+You can add a new category by clicking on the 'Add Category' button.<br>
+You can edit an existing category by clicking on the 'Edit' button next to the category.<br>
+You can delete a category by clicking on the 'Delete' button next to the category.<br><br>
+
+The ToDoList application was developed using the Django web framework, which is written in Python. HTML, CSS and JavaScript were also used for front-end development. The database used is SQLite, which is integrated into Django.
