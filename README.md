@@ -1,6 +1,8 @@
 <h1>ToDoList Application</h1>
 A simple task management system built with Django web framework. With this application, you can create, edit, delete, and complete tasks and categories.<br>
-![image](https://user-images.githubusercontent.com/96372115/216814167-f5cc9f95-b6f0-4742-9763-3493849ee77e.png)
+
+![image](https://user-images.githubusercontent.com/96372115/216814245-cf7b30f1-bf25-438c-a295-ccd5b64bfe79.png)
+
 
 <h3>Requirements</h3>
 Django (3.1 or later)<br>
