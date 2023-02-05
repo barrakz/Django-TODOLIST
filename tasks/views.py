@@ -5,8 +5,15 @@ from .models import Task, Category
 # MAIN MENU AND TASKS ADD AND EDIT
 
 def index(request):
-    tasks = Task.objects.all()
+    print(request.GET)
+    tasks = Task.objects.all().order_by('-created_at')
     categories = Category.objects.all()
+    status = request.GET.get('status')
+    if status == "True":
+        tasks = tasks.filter(completed=True)
+    elif status == "False":
+        tasks = tasks.filter(completed=False)
+
     context = {'tasks': tasks,
                'categories': categories}
     return render(request, 'tasks/index.html', context)
@@ -52,7 +59,7 @@ def add_category(request):
     if request.method == 'POST':
         name = request.POST['name']
         Category.objects.create(name=name)
-        return redirect('index')
+        return redirect('add_category')
     context = {'categories': categories}
     return render(request, 'tasks/add_category.html', context)
 
@@ -79,5 +86,4 @@ def delete_category(request, pk):
         task.category = default_category
         task.save()
     Category.objects.get(id=pk).delete()
-    return redirect('index')
-
+    return redirect('add_category')
