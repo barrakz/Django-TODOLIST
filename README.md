@@ -27,7 +27,6 @@ You can edit an existing task by clicking on the 'Edit' button next to the task.
 You can delete a task by clicking on the 'Delete' button next to the task.<br>
 You can mark a task as complete by clicking on the 'Mark as Complete' button next to the task.<br>
 <h3>Categories</h3>
-You can view all the categories by clicking on the 'Categories' link in the navigation bar.<br>
 You can add a new category by clicking on the 'Add Category' button.<br>
 You can edit an existing category by clicking on the 'Edit' button next to the category.<br>
 You can delete a category by clicking on the 'Delete' button next to the category.<br><br>
