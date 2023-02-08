@@ -24,7 +24,7 @@ def index(request):
 
 @login_required
 def add(request):
-    categories = Category.objects.all()
+    categories = Category.objects.filter(user=request.user)
     if request.method == 'POST':
         name = request.POST['name']
         category = Category.objects.get(id=request.POST['category'])
@@ -87,7 +87,7 @@ def edit_category(request, pk):
 @login_required
 def delete_category(request, pk):
     try:
-        category = Category.objects.get(id=pk)
+        category = Category.objects.get(id=pk, user=request.user)
         default_category, created = Category.objects.get_or_create(
             name='None', user=request.user)
     except Category.DoesNotExist:
