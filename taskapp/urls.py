@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from tasks import views
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -29,5 +30,13 @@ urlpatterns = [
     path('category/add/', views.add_category, name='add_category'),
     path('category/edit/<int:pk>', views.edit_category, name='edit_category'),
     path('delete_category/<int:pk>/', views.delete_category, name='delete_category'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+
+
+
 
 ]
+# path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+# path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),

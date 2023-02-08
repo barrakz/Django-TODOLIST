@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% if user.is_authenticated %}
+    <p>Jesteś zalogowany jako {{ user.username }}</p>
+{% else %}
+    <p>Nie jesteś zalogowany</p>
+{% endif %}
 <h1 class="text-center">TODO LIST</h1>
 <form action="{% url 'index' %}" method="get" style="text-align: center;">
     <label for="status">Show:</label>
