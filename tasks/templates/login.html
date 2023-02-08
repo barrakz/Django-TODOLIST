@@ -1,15 +1,12 @@
-<html>
-  <head>
-    <title>Login</title>
-	  
-  </head>
-  <body>
-    <h1>Loginx</h1>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>TODO LIST APP Login</h1>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Submit</button>
-    </form>
+    </form><p>Jeśli jeszcze nie masz konta, <a href="{% url 'register' %}">zarejestruj się</a>.</p>
 
-  </body>
-</html>
+
+{% endblock %}

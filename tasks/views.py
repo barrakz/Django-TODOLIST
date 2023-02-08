@@ -1,12 +1,14 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login
 from django.shortcuts import render, redirect
+
+from taskapp import settings
 from .models import Task, Category
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 
 # MAIN MENU AND TASKS ADD AND EDIT
-@login_required
+@login_required(login_url=settings.LOGIN_URL)
 def index(request):
     tasks = Task.objects.filter(user=request.user).order_by('-created_at')
     categories = Category.objects.filter(user=request.user)
@@ -97,15 +99,21 @@ def delete_category(request, pk):
     return redirect('add_category')
 
 
+from django.shortcuts import redirect
+
+# ...
+
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             # log the user in
-            return redirect('index')
+            login(request, form.get_user())
+            return redirect('index') # przekierowanie na stronę główną
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
 
 
 def register_view(request):
@@ -121,4 +129,8 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('index')
+    return redirect('login')
+
+
+def user_not_authenticated(user):
+    return not user.is_authenticated
