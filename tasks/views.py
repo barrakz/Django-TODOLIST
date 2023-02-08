@@ -9,7 +9,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 @login_required
 def index(request):
     tasks = Task.objects.filter(user=request.user).order_by('-created_at')
-    categories = Category.objects.all()
+    categories = Category.objects.filter(user=request.user)
     status = request.GET.get('status')
     if status == "True":
         tasks = tasks.filter(completed=True)
@@ -18,7 +18,6 @@ def index(request):
 
     context = {'tasks': tasks, 'categories': categories, 'user': request.user}
     return render(request, 'tasks/index.html', context)
-
 
 
 @login_required
@@ -61,11 +60,11 @@ def complete_task(request, task_id):
 # CATEGORIES
 @login_required
 def add_category(request):
-    categories = Category.objects.all()
     if request.method == 'POST':
         name = request.POST['name']
-        Category.objects.create(name=name)
+        Category.objects.create(name=name, user=request.user)
         return redirect('add_category')
+    categories = Category.objects.filter(user=request.user)
     context = {'categories': categories}
     return render(request, 'tasks/add_category.html', context)
 
@@ -73,6 +72,8 @@ def add_category(request):
 @login_required
 def edit_category(request, pk):
     category = Category.objects.get(id=pk)
+    if category.user != request.user:
+        return redirect('index')
     if request.method == 'POST':
         category.name = request.POST['name']
         category.save()
@@ -84,16 +85,15 @@ def edit_category(request, pk):
 @login_required
 def delete_category(request, pk):
     try:
-        default_category = Category.objects.get(name='None')
+        category = Category.objects.get(id=pk)
+        default_category, created = Category.objects.get_or_create(
+            name='None', user=request.user)
     except Category.DoesNotExist:
-        default_category = Category.objects.create(name='None')
+        return redirect('add_category')
+    tasks = Task.objects.filter(category=category)
+    tasks.update(category=default_category)
 
-    default_category = Category.objects.get(name='None')
-    tasks = Task.objects.filter(category=pk)
-    for task in tasks:
-        task.category = default_category
-        task.save()
-    Category.objects.get(id=pk).delete()
+    category.delete()
     return redirect('add_category')
 
 
@@ -107,6 +107,7 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
+
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -116,6 +117,7 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
+
 
 def logout_view(request):
     logout(request)
