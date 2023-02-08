@@ -8,7 +8,6 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 # MAIN MENU AND TASKS ADD AND EDIT
 @login_required
 def index(request):
-    print(request.GET)
     tasks = Task.objects.filter(user=request.user).order_by('-created_at')
     categories = Category.objects.all()
     status = request.GET.get('status')
@@ -17,9 +16,9 @@ def index(request):
     elif status == "False":
         tasks = tasks.filter(completed=False)
 
-    context = {'tasks': tasks,
-               'categories': categories}
+    context = {'tasks': tasks, 'categories': categories, 'user': request.user}
     return render(request, 'tasks/index.html', context)
+
 
 
 @login_required
