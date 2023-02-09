@@ -99,8 +99,6 @@ def delete_category(request, pk):
     return redirect('add_category')
 
 
-from django.shortcuts import redirect
-
 # ...
 
 def login_view(request):
@@ -109,11 +107,10 @@ def login_view(request):
         if form.is_valid():
             # log the user in
             login(request, form.get_user())
-            return redirect('index') # przekierowanie na stronę główną
+            return redirect('index')  # przekierowanie na stronę główną
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
-
 
 
 def register_view(request):
