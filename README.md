@@ -1,34 +1,46 @@
-<h1>ToDoList Application</h1>
-A simple task management system built with Django web framework. With this application, you can create, edit, delete, and complete tasks and categories.<br>
+<h2>Documentation for Django ToDoList project</h2>
 
-![image](https://user-images.githubusercontent.com/96372115/216814245-cf7b30f1-bf25-438c-a295-ccd5b64bfe79.png)
+This is a simple ToDoList application built with Django framework.
+
+<h3>The application has the following functionalities:</h3>
+
+Adding tasks
+
+Marking tasks as completed
+
+Assigning tasks to categories which can also be added
+
+Login support, allowing each logged-in user to add their own tasks and categories
 
 
-<h3>Requirements</h3>
-Django (3.1 or later)<br>
-Python (3.7 or later)
-<h3>Installation</h3>
-Clone the repository to your local machine.<br>
+The application uses PostgreSQL as the database and has a basic front-end built using Bootstrap. There are also tests written to check the functionality of adding and editing tasks and categories.
+
+<h3>The following technologies were used to build this application:</h3>
+
+Django (Python Web Framework)
+
+HTML
+
+CSS
+
+Bootstrap (CSS Framework)
+
+PostgreSQL (Database)
 
 
-Install the required packages:<br>
-```pip install -r requirements.txt```<br><br>
-Run the following command to apply the database migrations:<br>
-```python manage.py migrate```<br><br>
-Start the development server:<br>
-```python manage.py runserver```<br><br>
-You can now access the application at ``` http://localhost:8000/ ```
 
-<h2>Usage</h2>
-<h3>Tasks</h3>
-You can view all the tasks by clicking on the 'Tasks' link in the navigation bar.<br>
-You can add a new task by clicking on the 'Add Task' button.<br>
-You can edit an existing task by clicking on the 'Edit' button next to the task.<br>
-You can delete a task by clicking on the 'Delete' button next to the task.<br>
-You can mark a task as complete by clicking on the 'Mark as Complete' button next to the task.<br>
-<h3>Categories</h3>
-You can add a new category by clicking on the 'Add Category' button.<br>
-You can edit an existing category by clicking on the 'Edit' button next to the category.<br>
-You can delete a category by clicking on the 'Delete' button next to the category.<br><br>
+The project was created by Bartłomiej Rakuzy. The code for this project is available on Github.
 
-The ToDoList application was developed using the Django web framework, which is written in Python. HTML, CSS and JavaScript were also used for front-end development. The database used is SQLite, which is integrated into Django.
+<h3>To download the project from Github and run it locally:</h3>
+
+Clone the repository to your local machine using the following command:``` git clone https://github.com/barrakz/Django-TODOLIST.git```
+  
+Install the required dependencies: ```pip install -r requirements.txt```
+  
+Migrate the database: ```python manage.py migrate```
+  
+Run the local development server: ```python manage.py runserver```
+  
+Visit ```http://localhost:8000/``` in your web browser to access the application.
+  
+ 
