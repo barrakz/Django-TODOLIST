@@ -2,6 +2,9 @@
 
 This is a simple ToDoList application built with Django framework.
 
+![image](https://user-images.githubusercontent.com/96372115/218262498-de430003-d973-4b3b-93ef-479043d377c1.png)
+
+
 <h3>The application has the following functionalities:</h3>
 
 Adding tasks
@@ -13,7 +16,9 @@ Assigning tasks to categories which can also be added
 Login support, allowing each logged-in user to add their own tasks and categories
 
 
-The application uses PostgreSQL as the database and has a basic front-end built using Bootstrap. There are also tests written to check the functionality of adding and editing tasks and categories.
+The application uses PostgreSQL as the database and has a basic front-end built using Bootstrap. 
+
+There are also tests written to check the functionality of adding and editing tasks and categories.
 
 <h3>The following technologies were used to build this application:</h3>
 
@@ -29,7 +34,7 @@ PostgreSQL (Database)
 
 
 
-The project was created by Bartłomiej Rakuzy. The code for this project is available on Github.
+The code for this project is available on Github.
 
 <h3>To download the project from Github and run it locally:</h3>
 
@@ -42,5 +47,8 @@ Migrate the database: ```python manage.py migrate```
 Run the local development server: ```python manage.py runserver```
   
 Visit ```http://localhost:8000/``` in your web browser to access the application.
+
+
+The project was created by Bartłomiej Rakuzy. 
   
  
