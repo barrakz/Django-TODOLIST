@@ -72,6 +72,31 @@ class TaskAddTestCase(TestCase):
         self.assertEqual(task.user, self.user)
 
 
+class CategoryTests(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.client.login(username='testuser', password='testpassword')
+        self.default_category, created = Category.objects.get_or_create(
+            name='None', user=self.user)
+
+    def test_add_category(self):
+        url = reverse('add_category')
+        response = self.client.post(url, {'name': 'Test Category'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Category.objects.count(), 2)
+        self.assertEqual(Category.objects.get(name='Test Category').user, self.user)
+
+    def test_edit_category(self):
+        category = Category.objects.create(name='Test Category', user=self.user)
+        url = reverse('edit_category', args=[category.id])
+        response = self.client.post(url, {'name': 'Edited Test Category'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Category.objects.count(), 2)
+        self.assertEqual(Category.objects.get(id=category.id).name, 'Edited Test Category')
+
 
 
 
