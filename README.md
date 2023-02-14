@@ -34,7 +34,7 @@ PostgreSQL (Database)
 
 
 
-The code for this project is available on Github.
+
 
 <h3>To download the project from Github and run it locally:</h3>
 
@@ -46,9 +46,11 @@ Migrate the database: ```python manage.py migrate```
   
 Run the local development server: ```python manage.py runserver```
   
-Visit ```http://localhost:8000/``` in your web browser to access the application.
+Visit ```http://localhost:8000/``` in your web browser to access the application.<br><b>
+
+The project can also be run in Docker. <br><br>
 
 
-The project was created by Bartłomiej Rakuzy. 
+Created by Bartłomiej Rakuzy. 
   
  
