@@ -1,3 +1,5 @@
+<i>python | django | bootstrap | postgresql | docker</i>
+
 <h2>Documentation for Django ToDoList project</h2>
 
 This is a simple ToDoList application built with Django framework.
