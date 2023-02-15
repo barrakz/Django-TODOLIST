@@ -27,22 +27,30 @@ def add(request):
     categories = Category.objects.filter(user=request.user)
     if request.method == 'POST':
         name = request.POST['name']
-        category = Category.objects.get(id=request.POST['category'])
+        category_id = request.POST.get('category')
+        if category_id:
+            category = Category.objects.get(id=category_id)
+        else:
+            category = None
         Task.objects.create(name=name, category=category, user=request.user)
         return redirect('index')
     context = {'categories': categories}
     return render(request, 'tasks/add.html', context)
 
 
+
 @login_required
 def edit(request, pk):
     task = Task.objects.get(id=pk)
+    categories = Category.objects.filter(user=request.user)
     if request.method == 'POST':
         task.name = request.POST['name']
+        task.category = Category.objects.get(id=request.POST['category'])
         task.save()
         return redirect('index')
-    context = {'task': task}
+    context = {'task': task, 'categories': categories}
     return render(request, 'tasks/edit.html', context)
+
 
 
 @login_required
